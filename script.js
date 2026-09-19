@@ -1,10 +1,7 @@
-// --- 1. ADD NEW CREATOR FILES HERE --- //
 const profileFiles = [
   'benny.json'
-  // 'another-creator.json'
 ];
 
-// --- 2. FETCH PROFILES AND BUILD GRID --- //
 const grid = document.getElementById('profileGrid');
 const loadedProfiles = [];
 
@@ -45,7 +42,6 @@ function createProfileCard(profile) {
   return card;
 }
 
-// --- 3. MODAL LOGIC WITH ICONS --- //
 const modalOverlay = document.getElementById('profileModal');
 const closeModalBtn = document.getElementById('closeModal');
 
@@ -55,7 +51,8 @@ const iconMap = {
   instagram: 'fa-brands fa-instagram',
   website: 'fa-solid fa-globe',
   spotify_podcast: 'fa-brands fa-spotify',
-  spotify_artist: 'fa-brands fa-spotify'
+  spotify_artist: 'fa-brands fa-spotify',
+  youtube: 'fa-brands fa-youtube'
 };
 
 const displayNames = {
@@ -63,8 +60,9 @@ const displayNames = {
   tiktok: 'TikTok',
   instagram: 'Instagram',
   website: 'Website',
-  spotify_podcast: 'Spotify podcast',
-  spotify_artist: 'Spotify artist'
+  spotify_podcast: 'Spotify Podcast',
+  spotify_artist: 'Spotify Artist',
+  youtube: 'YouTube'
 };
 
 function openModal(profile) {
@@ -84,7 +82,7 @@ function openModal(profile) {
   if (profile.links) {
     if (profile.links.socials) {
       for (const [key, url] of Object.entries(profile.links.socials)) {
-        if (url) {
+        if (url && url.trim() !== "") {
           const iconClass = iconMap[key] || 'fa-solid fa-link';
           const label = displayNames[key] || key;
           modalSocials.innerHTML += `
@@ -97,7 +95,7 @@ function openModal(profile) {
     
     if (profile.links.platforms) {
       for (const [key, url] of Object.entries(profile.links.platforms)) {
-        if (url) {
+        if (url && url.trim() !== "") {
           const iconClass = iconMap[key] || 'fa-solid fa-link';
           const label = displayNames[key] || key;
           modalPlatforms.innerHTML += `
@@ -108,14 +106,6 @@ function openModal(profile) {
         }
       }
     }
-  }
-
-  const modalFeatured = document.getElementById('modalFeatured');
-  modalFeatured.innerHTML = '';
-  if (profile.featured) {
-    profile.featured.forEach(item => {
-      modalFeatured.innerHTML += `<a href="${item.url}" target="_blank" class="featured-box"></a>`;
-    });
   }
 
   modalOverlay.classList.add('active');
@@ -132,7 +122,6 @@ modalOverlay.addEventListener('click', (e) => {
   if (e.target === modalOverlay) closeModal();
 });
 
-// --- 4. FILTERING & SEARCH --- //
 const searchInput = document.getElementById('searchInput');
 searchInput.addEventListener('input', () => {
   const query = searchInput.value.toLowerCase();
@@ -161,7 +150,6 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-// --- 5. THEME ENGINE --- //
 const settingsPanel = document.getElementById('settingsPanel');
 document.getElementById('settingsBtn').onclick = () => settingsPanel.classList.toggle('show');
 
@@ -195,5 +183,4 @@ toggleThemeBtn.onclick = () => {
   localStorage.setItem('yeraq_theme', nextTheme);
 };
 
-// Start the app
 loadAllProfiles();

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YeRaq Profile Maker</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root { --bg-color: #f5f5f7; --card-bg: #ffffff; --text-primary: #1d1d1f; --border: #e5e5ea; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px; background: var(--bg-color); color: var(--text-primary); display: flex; gap: 30px; height: 100vh; box-sizing: border-box; }
+    h1, h2, h3 { margin-top: 0; }
+    
+    .editor-panel { flex: 1; background: var(--card-bg); padding: 30px; border-radius: 16px; box-shadow: 0 4px 14px rgba(0,0,0,0.05); overflow-y: auto; border: 1px solid var(--border); }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
+    input[type="text"], textarea { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; box-sizing: border-box; }
+    textarea { resize: vertical; min-height: 80px; }
+    .checkbox-group { display: flex; gap: 15px; }
+    .checkbox-group label { font-weight: normal; display: inline-flex; align-items: center; gap: 5px; }
+    
+    .notice { background: #fff3cd; color: #856404; padding: 15px; border-radius: 8px; border: 1px solid #ffeeba; margin-bottom: 25px; font-weight: 500; line-height: 1.4; }
+    .download-btn { width: 100%; padding: 15px; background: #000; color: #fff; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; }
+    .download-btn:hover { background: #333; }
+
+    .preview-panel { flex: 1; display: flex; flex-direction: column; }
+    .preview-container { flex: 1; background: #e5e5ea; border-radius: 16px; padding: 20px; display: flex; align-items: center; justify-content: center; }
+    
+    .modal-mockup { background: #fff; width: 100%; max-width: 800px; border-radius: 20px; border: 2px solid #000; display: flex; min-height: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .modal-left { flex: 0 0 35%; padding: 30px 20px; border-right: 2px solid #000; text-align: center; }
+    .modal-img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid #000; margin-bottom: 15px; display: inline-flex; align-items: center; justify-content: center; background: #f5f5f7; font-size: 3rem; }
+    .modal-title { margin: 0 0 5px; font-size: 1.5rem; }
+    .modal-tags { font-size: 0.85rem; color: #666; font-weight: 600; margin-bottom: 20px; }
+    .modal-desc { font-size: 0.85rem; line-height: 1.5; text-align: left; }
+    
+    .modal-right { flex: 1; padding: 30px; display: flex; flex-direction: column; }
+    .social-list { display: flex; flex-direction: column; gap: 15px; }
+    .platforms-bottom { margin-top: auto; display: flex; flex-direction: column; gap: 15px; }
+    
+    .social-link { display: flex; align-items: center; gap: 10px; color: #000; text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+    .social-link i { font-size: 1.2rem; width: 25px; text-align: center; }
+    
+    .platform-link { display: flex; align-items: center; gap: 10px; color: #000; text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+    .platform-link i { font-size: 1.5rem; width: 30px; text-align: center; }
+    .platform-btn { border: 2px solid #000; padding: 8px 12px; border-radius: 4px; flex: 1; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <div class="editor-panel">
+    <h1>YeRaq Profile Maker</h1>
+    
+    <div class="notice">
+      <strong>⚠️ IMPORTANT INSTRUCTIONS:</strong><br>
+      1. Fill out this form and click "Download Profile".<br>
+      2. Send the downloaded <code>.json</code> file to Bennyboyblue121.<br>
+      3. <strong>You MUST also send the actual image file</strong> you upload here!
+    </div>
+
+    <form id="profileForm">
+      <h3>Basic Info</h3>
+      <div class="form-group">
+        <label>Creator Name</label>
+        <input type="text" id="i_name" placeholder="Enter your name" required>
+      </div>
+      <div class="form-group">
+        <label>Profile Picture (Optional)</label>
+        <input type="file" id="i_image" accept="image/*">
+      </div>
+      <div class="form-group">
+        <label>Roles (Select all that apply)</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="type" value="podcast"> Podcast</label>
+          <label><input type="checkbox" name="type" value="artist"> Artist</label>
+          <label><input type="checkbox" name="type" value="yeditor"> Yeditor</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Short Bio / Description (Optional)</label>
+        <textarea id="i_desc" placeholder="Write a short description about what you do..."></textarea>
+      </div>
+
+      <h3>Social Links</h3>
+      <div class="form-group"><label>Discord Link (Optional)</label><input type="text" id="i_discord" placeholder="https://discord.gg/..."></div>
+      <div class="form-group"><label>TikTok Link (Optional)</label><input type="text" id="i_tiktok" placeholder="https://tiktok.com/@..."></div>
+      <div class="form-group"><label>Instagram Link (Optional)</label><input type="text" id="i_instagram" placeholder="https://instagram.com/..."></div>
+      <div class="form-group"><label>Website (Optional)</label><input type="text" id="i_website" placeholder="https://yourwebsite.com"></div>
+
+      <h3>Platform Buttons</h3>
+      <div class="form-group"><label>Spotify Podcast (Optional)</label><input type="text" id="i_spot_pod" placeholder="https://open.spotify.com/show/..."></div>
+      <div class="form-group"><label>Spotify Artist (Optional)</label><input type="text" id="i_spot_art" placeholder="https://open.spotify.com/artist/..."></div>
+      <div class="form-group"><label>YouTube Link (Optional)</label><input type="text" id="i_youtube" placeholder="https://youtube.com/..."></div>
+
+      <button type="button" class="download-btn" id="downloadBtn">⬇ Download Profile (.json)</button>
+    </form>
+  </div>
+
+  <div class="preview-panel">
+    <h2 style="margin-left: 20px;">Live Preview</h2>
+    <div class="preview-container">
+      <div class="modal-mockup">
+        <div class="modal-left">
+          <img id="p_img" src="" alt="Profile" class="modal-img" style="display:none;">
+          <div id="p_img_fallback" class="modal-img">👤</div>
+          
+          <h2 class="modal-title" id="p_name">Creator Name</h2>
+          <div class="modal-tags" id="p_tags">Role</div>
+          <p class="modal-desc" id="p_desc">Your description will appear here...</p>
+        </div>
+        
+        <div class="modal-right">
+          <div class="social-list" id="p_socials"></div>
+          <div class="platforms-bottom" id="p_platforms"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('profileForm');
+    let imageFilename = "";
+
+    const iconMap = {
+      discord: 'fa-brands fa-discord', tiktok: 'fa-brands fa-tiktok',
+      instagram: 'fa-brands fa-instagram', website: 'fa-solid fa-globe',
+      spotify_podcast: 'fa-brands fa-spotify', spotify_artist: 'fa-brands fa-spotify',
+      youtube: 'fa-brands fa-youtube'
+    };
+    const nameMap = {
+      discord: 'Discord Server', tiktok: 'TikTok', instagram: 'Instagram',
+      website: 'Website', spotify_podcast: 'Spotify Podcast', spotify_artist: 'Spotify Artist',
+      youtube: 'YouTube'
+    };
+
+    function updatePreview() {
+      document.getElementById('p_name').textContent = document.getElementById('i_name').value || "Creator Name";
+      document.getElementById('p_desc').textContent = document.getElementById('i_desc').value || "Your description will appear here...";
+      
+      const checkedTypes = Array.from(document.querySelectorAll('input[name="type"]:checked')).map(cb => cb.value);
+      document.getElementById('p_tags').textContent = checkedTypes.length ? checkedTypes.join(', ').replace(/\b\w/g, l => l.toUpperCase()) : "Role";
+
+      const socialsDiv = document.getElementById('p_socials');
+      const platformsDiv = document.getElementById('p_platforms');
+      socialsDiv.innerHTML = ''; platformsDiv.innerHTML = '';
+
+      const addLink = (id, key, isPlatform) => {
+        const val = document.getElementById(id).value;
+        if (val && val.trim() !== "") {
+          const icon = iconMap[key]; const label = nameMap[key];
+          if (isPlatform) {
+            platformsDiv.innerHTML += `<div class="platform-link"><i class="${icon}"></i><div class="platform-btn">${label}</div></div>`;
+          } else {
+            socialsDiv.innerHTML += `<div class="social-link"><i class="${icon}"></i> <span>${label}</span></div>`;
+          }
+        }
+      };
+
+      addLink('i_discord', 'discord', false);
+      addLink('i_tiktok', 'tiktok', false);
+      addLink('i_instagram', 'instagram', false);
+      addLink('i_website', 'website', false);
+      
+      addLink('i_spot_pod', 'spotify_podcast', true);
+      addLink('i_spot_art', 'spotify_artist', true);
+      addLink('i_youtube', 'youtube', true);
+    }
+
+    document.getElementById('i_image').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        imageFilename = "Img/" + file.name;
+        const url = URL.createObjectURL(file);
+        document.getElementById('p_img').src = url;
+        document.getElementById('p_img').style.display = 'inline-flex';
+        document.getElementById('p_img_fallback').style.display = 'none';
+      } else {
+        imageFilename = "";
+        document.getElementById('p_img').style.display = 'none';
+        document.getElementById('p_img_fallback').style.display = 'inline-flex';
+      }
+    });
+
+    form.addEventListener('input', updatePreview);
+
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const name = document.getElementById('i_name').value || "new_creator";
+      const checkedTypes = Array.from(document.querySelectorAll('input[name="type"]:checked')).map(cb => cb.value);
+      
+      const profileData = {
+        name: document.getElementById('i_name').value,
+        image: imageFilename, 
+        type: checkedTypes,
+        description: document.getElementById('i_desc').value,
+        links: {
+          socials: {
+            discord: document.getElementById('i_discord').value,
+            tiktok: document.getElementById('i_tiktok').value,
+            instagram: document.getElementById('i_instagram').value,
+            website: document.getElementById('i_website').value
+          },
+          platforms: {
+            spotify_podcast: document.getElementById('i_spot_pod').value,
+            spotify_artist: document.getElementById('i_spot_art').value,
+            youtube: document.getElementById('i_youtube').value
+          }
+        }
+      };
+
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(profileData, null, 2));
+      const downloadAnchorNode = document.createElement('a');
+      downloadAnchorNode.setAttribute("href", dataStr);
+      downloadAnchorNode.setAttribute("download", name.replace(/\s+/g, '_').toLowerCase() + ".json");
+      document.body.appendChild(downloadAnchorNode); 
+      downloadAnchorNode.click();
+      downloadAnchorNode.remove();
+    });
+
+    updatePreview();
+  </script>
+</body>
+</html>
