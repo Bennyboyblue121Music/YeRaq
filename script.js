@@ -1,5 +1,6 @@
 const profileFiles = [
-  'benny.json'
+  'benny.json',
+  'a_o.json'
 ];
 
 const grid = document.getElementById('profileGrid');

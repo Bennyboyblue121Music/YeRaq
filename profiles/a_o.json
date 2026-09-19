@@ -1,0 +1,21 @@
+{
+  "name": "A O",
+  "image": "Img/IMG_1587.jpg",
+  "type": [
+    "podcast"
+  ],
+  "description": "Join my family. Unreleased chad",
+  "links": {
+    "socials": {
+      "discord": "https://discord.gg/SpSc6kR2P",
+      "tiktok": "https://www.tiktok.com/@a.o13k15?_r=1&_t=ZN-99rK35r6LQs",
+      "instagram": "",
+      "website": ""
+    },
+    "platforms": {
+      "spotify_podcast": "https://open.spotify.com/show/03OuQFfgmpHEeE9v40rxhK?si=rLS73L60SiKUVAjWdP6AIg&utm_source=copy-link",
+      "spotify_artist": "",
+      "youtube": ""
+    }
+  }
+}
