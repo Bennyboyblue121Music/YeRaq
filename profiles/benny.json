@@ -1,0 +1,24 @@
+{
+  "name": "Bennyboyblue121",
+  "image": "Img/TuffCat.jpg",
+  "type": ["podcast", "artist"],
+  "description": "Bennyboyblue121 is Tuff",
+  "links": {
+    "socials": {
+      "discord": "https://discord.gg/your-link",
+      "tiktok": "https://tiktok.com/@your-link",
+      "instagram": "https://instagram.com/your-link",
+      "website": "https://bennyboyblue121music.github.io/Bennyboyblue121Music/"
+    },
+    "platforms": {
+      "spotify_podcast": "https://spotify.com/",
+      "spotify_artist": "https://spotify.com/"
+    }
+  },
+  "featured": [
+    { "url": "#", "image": "" },
+    { "url": "#", "image": "" },
+    { "url": "#", "image": "" },
+    { "url": "#", "image": "" }
+  ]
+}
