@@ -49,6 +49,7 @@ header {
   background: var(--bg-color);
   color: var(--text-primary);
   transition: box-shadow 0.2s;
+  box-sizing: border-box;
 }
 
 .search input:focus {
@@ -84,17 +85,6 @@ header {
 .icon-btn {
   padding: 8px 12px;
   font-size: 1.1rem;
-}
-
-.highlight-btn {
-  background: var(--text-primary);
-  color: var(--card-bg);
-  border-color: var(--text-primary);
-}
-
-.highlight-btn:hover {
-  background: var(--card-bg);
-  color: var(--text-primary);
 }
 
 /* --- Carousel Banner --- */
@@ -310,7 +300,6 @@ header {
   text-align: left;
 }
 
-/* Updated Right Panel: Pushes platform buttons to the bottom */
 .modal-right {
   flex: 1;
   padding: 40px;
@@ -346,7 +335,6 @@ header {
   opacity: 0.6;
 }
 
-/* Pushes the platform buttons to the absolute bottom of the right panel */
 .platforms-bottom {
   margin-top: auto; 
   padding-top: 20px;
@@ -409,7 +397,6 @@ header {
   font-size: 0.9rem;
 }
 
-/* --- Footer --- */
 footer {
   text-align: center;
   padding: 30px;
@@ -432,4 +419,58 @@ body.blue {
   --card-bg: #1e293b;
   --text-primary: #f8fafc;
   --border: #334155;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  header { padding: 15px; }
+  
+  .nav {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .search {
+    order: 3;
+    width: 100%;
+  }
+  
+  .search input {
+    width: 100%;
+  }
+
+  .carousel-slide {
+    height: 200px;
+  }
+
+  .carousel-title {
+    font-size: 1.5rem;
+  }
+
+  .filters {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+  }
+
+  .modal-content {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .modal-left {
+    border-right: none;
+    border-bottom: 2px solid var(--border);
+    padding: 30px 20px;
+    flex: none;
+  }
+
+  .modal-right {
+    padding: 30px 20px;
+    flex: none;
+  }
 }
