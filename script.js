@@ -1,6 +1,8 @@
 const profileFiles = [
   'benny.json',
-  'a_o.json'
+  'shmg.json',
+  'a_o.json',
+  'yeezypeeps_.json'
 ];
 
 const grid = document.getElementById('profileGrid');
@@ -30,13 +32,14 @@ function createProfileCard(profile) {
   card.dataset.type = profile.type.join(' ');
 
   let imageHTML = profile.image 
-    ? `<img src="${profile.image}" alt="${profile.name}" class="profile-img" onerror="this.outerHTML='<div class=\\'profile-img fallback\\'>👤</div>'">`
-    : `<div class="profile-img fallback">👤</div>`;
+    ? `<img src="${profile.image}" alt="${profile.name}" class="profile-img" onerror="this.src='Img/nopfp.png'">`
+    : `<img src="Img/nopfp.png" alt="No Profile Picture" class="profile-img">`;
 
   card.innerHTML = `
     ${imageHTML}
-    <button class="profile-link-btn">View Details</button>
+    <h3 class="profile-name">${profile.name}</h3>
     <p class="profile-role">${profile.type.join(', ').replace(/\b\w/g, l => l.toUpperCase())}</p>
+    <button class="profile-link-btn">View Details</button>
   `;
   
   card.querySelector('.profile-link-btn').addEventListener('click', () => openModal(profile));
@@ -72,8 +75,8 @@ function openModal(profile) {
   document.getElementById('modalTags').textContent = profile.type.join(', ').replace(/\b\w/g, l => l.toUpperCase());
 
   document.getElementById('modalImageContainer').innerHTML = profile.image 
-    ? `<img src="${profile.image}" alt="${profile.name}" class="modal-img" onerror="this.outerHTML='<div class=\\'modal-img fallback\\' style=\\'display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--card-bg);border:2px solid var(--text-primary);\\'>👤</div>'">`
-    : `<div class="modal-img fallback" style="display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--card-bg);border:2px solid var(--text-primary);">👤</div>`;
+    ? `<img src="${profile.image}" alt="${profile.name}" class="modal-img" onerror="this.src='Img/nopfp.png'">`
+    : `<img src="Img/nopfp.png" alt="No Profile Picture" class="modal-img">`;
 
   const modalSocials = document.getElementById('modalSocials');
   const modalPlatforms = document.getElementById('modalPlatforms');

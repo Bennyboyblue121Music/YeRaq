@@ -1,0 +1,22 @@
+{
+  "name": "shmg",
+  "image": "Img/nopfp.png",
+  "type": [
+    "podcast",
+    "artist"
+  ],
+  "description": "I am a ye uploader on spotify, i own yzy2missioncontrol, shmg and others.",
+  "links": {
+    "socials": {
+      "discord": "https://discord.gg/xqB82thh68",
+      "tiktok": "https://www.tiktok.com/@sohearmegod",
+      "instagram": "",
+      "website": ""
+    },
+    "platforms": {
+      "spotify_podcast": "https://open.spotify.com/show/033KcWTM1CA26KKCCVo5gL",
+      "spotify_artist": "https://open.spotify.com/artist/59EQZpHrMvIAiWGC7CxEBE",
+      "youtube": ""
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "YEEZYPEEPS ",
+  "image": "Img/nopfp.png",
+  "type": [
+    "podcast"
+  ],
+  "description": "I like uploading unreleased or not available in certain region Ye songs including some yedits",
+  "links": {
+    "socials": {
+      "discord": "https://discord.gg/RdtVAnFUx",
+      "tiktok": "https://www.tiktok.com/@yeezypeeps?_r=1&_t=ZG-99rg1c4SXVx",
+      "instagram": "",
+      "website": ""
+    },
+    "platforms": {
+      "spotify_podcast": "https://open.spotify.com/show/033QtU5ljH8lwJZ7VL0L3R",
+      "spotify_artist": "",
+      "youtube": ""
+    }
+  }
+}

@@ -48,11 +48,18 @@ header {
   font-size: 0.95rem;
   background: var(--bg-color);
   color: var(--text-primary);
+  transition: box-shadow 0.2s;
+}
+
+.search input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
 }
 
 .nav-actions {
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  align-items: center;
 }
 
 .nav-btn {
@@ -64,11 +71,30 @@ header {
   font-weight: 500;
   color: var(--text-primary);
   text-decoration: none;
-  transition: background 0.2s;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .nav-btn:hover {
   background: var(--border);
+}
+
+.icon-btn {
+  padding: 8px 12px;
+  font-size: 1.1rem;
+}
+
+.highlight-btn {
+  background: var(--text-primary);
+  color: var(--card-bg);
+  border-color: var(--text-primary);
+}
+
+.highlight-btn:hover {
+  background: var(--card-bg);
+  color: var(--text-primary);
 }
 
 /* --- Carousel Banner --- */
@@ -152,12 +178,18 @@ header {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 20px;
+  padding: 25px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 .profile-img {
@@ -165,20 +197,26 @@ header {
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   border: 2px solid var(--border);
-}
-
-.profile-img.fallback {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.5rem;
   background: var(--bg-color);
 }
 
+.profile-name {
+  margin: 5px 0 5px 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.profile-role {
+  margin: 0 0 15px 0;
+  font-size: 0.85rem;
+  color: #666;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
 .profile-link-btn {
-  margin-top: 10px;
   background: var(--text-primary);
   color: var(--card-bg);
   border: none;
@@ -187,18 +225,11 @@ header {
   cursor: pointer;
   font-weight: 500;
   transition: opacity 0.2s;
+  width: 100%;
 }
 
 .profile-link-btn:hover {
   opacity: 0.8;
-}
-
-.profile-role {
-  margin-top: 10px;
-  font-size: 0.85rem;
-  color: #666;
-  text-transform: uppercase;
-  font-weight: 600;
 }
 
 /* --- Modal Overlay & Layout --- */
@@ -257,6 +288,7 @@ header {
   object-fit: cover;
   border: 2px solid var(--text-primary);
   margin-bottom: 15px;
+  background: var(--bg-color);
 }
 
 .modal-title {
@@ -362,7 +394,7 @@ header {
   border: 1px solid var(--border);
   padding: 15px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
   display: none;
   z-index: 200;
   width: 150px;

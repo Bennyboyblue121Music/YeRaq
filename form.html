@@ -27,7 +27,7 @@
     
     .modal-mockup { background: #fff; width: 100%; max-width: 800px; border-radius: 20px; border: 2px solid #000; display: flex; min-height: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
     .modal-left { flex: 0 0 35%; padding: 30px 20px; border-right: 2px solid #000; text-align: center; }
-    .modal-img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid #000; margin-bottom: 15px; display: inline-flex; align-items: center; justify-content: center; background: #f5f5f7; font-size: 3rem; }
+    .modal-img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid #000; margin-bottom: 15px; display: inline-flex; align-items: center; justify-content: center; background: #f5f5f7; }
     .modal-title { margin: 0 0 5px; font-size: 1.5rem; }
     .modal-tags { font-size: 0.85rem; color: #666; font-weight: 600; margin-bottom: 20px; }
     .modal-desc { font-size: 0.85rem; line-height: 1.5; text-align: left; }
@@ -42,11 +42,14 @@
     .platform-link { display: flex; align-items: center; gap: 10px; color: #000; text-decoration: none; font-weight: 500; font-size: 0.9rem; }
     .platform-link i { font-size: 1.5rem; width: 30px; text-align: center; }
     .platform-btn { border: 2px solid #000; padding: 8px 12px; border-radius: 4px; flex: 1; text-align: center; }
+    
+    .nav-btn { display: inline-block; background: #000; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 20px; font-weight: 600; margin-bottom: 20px; }
   </style>
 </head>
 <body>
 
   <div class="editor-panel">
+    <a href="index.html" class="nav-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
     <h1>YeRaq Profile Maker</h1>
     
     <div class="notice">
@@ -99,8 +102,7 @@
     <div class="preview-container">
       <div class="modal-mockup">
         <div class="modal-left">
-          <img id="p_img" src="" alt="Profile" class="modal-img" style="display:none;">
-          <div id="p_img_fallback" class="modal-img">👤</div>
+          <img id="p_img" src="Img/nopfp.png" alt="Profile" class="modal-img" onerror="this.src=''">
           
           <h2 class="modal-title" id="p_name">Creator Name</h2>
           <div class="modal-tags" id="p_tags">Role</div>
@@ -170,12 +172,9 @@
         imageFilename = "Img/" + file.name;
         const url = URL.createObjectURL(file);
         document.getElementById('p_img').src = url;
-        document.getElementById('p_img').style.display = 'inline-flex';
-        document.getElementById('p_img_fallback').style.display = 'none';
       } else {
         imageFilename = "";
-        document.getElementById('p_img').style.display = 'none';
-        document.getElementById('p_img_fallback').style.display = 'inline-flex';
+        document.getElementById('p_img').src = "Img/nopfp.png";
       }
     });
 
